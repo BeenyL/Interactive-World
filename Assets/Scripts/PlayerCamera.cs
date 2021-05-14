@@ -8,22 +8,23 @@ public class PlayerCamera : MonoBehaviour
     [SerializeField] Transform playerBody;
     [SerializeField] Camera playerCam;
     float xRot = 0;
+    bool mToggle = true;
 
-    // Start is called before the first frame update
     void Start()
     {
-        //todo make this a toggle using tab?
-        Cursor.lockState = CursorLockMode.Locked;
+        
     }
 
-    // Update is called once per frame
     void Update()
     {
         LookandRotate();
+        toggleMouse();
     }
 
     void LookandRotate()
     {
+        if(mToggle)
+        {
         float mouseX = Input.GetAxis("Mouse X");
         float mouseY = Input.GetAxis("Mouse Y");
         
@@ -32,12 +33,18 @@ public class PlayerCamera : MonoBehaviour
         
         playerCam.transform.Rotate(xRot, 0, 0);
         playerBody.Rotate(0, mouseX * cameraSensitivity, 0);
+        }
+    }
 
-        // playerCam.transform.Rotate(xRot * cameraSensitivity, 0, 0);
-        // camera vertical rotation
-        // transform.localRotation = Quaternion.Euler(xRot , 0, 0);
-        // player horizontal rotation
-        // playerBody.Rotate(Vector3.up * mouseX);
+    void toggleMouse()
+    {
+        if (Input.GetKeyDown(KeyCode.Tab))
+            mToggle = !mToggle;
+
+        if (mToggle)
+            Cursor.lockState = CursorLockMode.Locked;
+        else
+            Cursor.lockState = CursorLockMode.None;
     }
 
 }

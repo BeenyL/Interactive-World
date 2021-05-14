@@ -27,8 +27,6 @@ public class Player : MonoBehaviour
     void Movement()
     {
         // movement
-/*        inputs.x = Input.GetAxis("Horizontal");
-        inputs.z = Input.GetAxis("Vertical");*/
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
         inputs = transform.TransformDirection(inputs);
