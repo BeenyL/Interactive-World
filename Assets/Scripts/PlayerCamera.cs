@@ -6,7 +6,6 @@ public class PlayerCamera : MonoBehaviour
 {
     [SerializeField] float cameraSensitivity = 5f;
     [SerializeField] Transform playerBody;
-    [SerializeField] Camera playerCam;
     float xRot = 0;
     bool mToggle = true;
 
@@ -25,14 +24,14 @@ public class PlayerCamera : MonoBehaviour
     {
         if(mToggle)
         {
-        float mouseX = Input.GetAxis("Mouse X");
-        float mouseY = Input.GetAxis("Mouse Y");
+            float mouseX = Input.GetAxis("Mouse X") * cameraSensitivity * Time.deltaTime;
+            float mouseY = Input.GetAxis("Mouse Y") * cameraSensitivity * Time.deltaTime;
         
-        xRot = -mouseY * cameraSensitivity;
-        xRot = Mathf.Clamp(xRot, -90, 90);
+            xRot -= mouseY;
+            xRot = Mathf.Clamp(xRot, -90, 90);
         
-        playerCam.transform.Rotate(xRot, 0, 0);
-        playerBody.Rotate(0, mouseX * cameraSensitivity, 0);
+            transform.localRotation = Quaternion.Euler(xRot, 0, 0);
+            playerBody.Rotate(Vector3.up * mouseX);
         }
     }
 
