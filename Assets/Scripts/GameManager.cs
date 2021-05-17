@@ -24,6 +24,11 @@ public class GameManager : MonoBehaviour
         #endregion
     }
 
+    void Update()
+    {
+        
+    }
+
     public void LoadScene(string scene)
     {
         StartCoroutine(LoadSceneCoroutine(scene));

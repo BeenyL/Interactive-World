@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2753581923174525014}
   - component: {fileID: 2753581923174524969}
   - component: {fileID: 2753581923174525012}
+  - component: {fileID: 353093162}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -198,6 +199,20 @@ MonoBehaviour:
       data1: 0
       data2: 0
   defaultFrameSettings: 0
+--- !u!114 &353093162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2753581923174524968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9feb2f5d1b39658418ddf3c2a2692f2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraSensitivity: 100
+  playerBody: {fileID: 2753581924811949628}
 --- !u!1 &2753581924034971592
 GameObject:
   m_ObjectHideFlags: 0
@@ -304,7 +319,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2753581924811949628}
   - component: {fileID: 2753581924811949626}
-  - component: {fileID: 3150088335788058870}
   - component: {fileID: 2753581924811949629}
   m_Layer: 0
   m_Name: Player
@@ -345,21 +359,6 @@ MonoBehaviour:
   walkSpeed: 10
   runSpeed: 20
   charactercontroller: {fileID: 2753581924811949629}
---- !u!114 &3150088335788058870
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2753581924811949631}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9feb2f5d1b39658418ddf3c2a2692f2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cameraSensitivity: 100
-  playerBody: {fileID: 2753581924811949628}
-  playerCam: {fileID: 2753581923174525014}
 --- !u!143 &2753581924811949629
 CharacterController:
   m_ObjectHideFlags: 0

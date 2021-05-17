@@ -6,23 +6,27 @@ public class PlayerCamera : MonoBehaviour
 {
     [SerializeField] float cameraSensitivity = 5f;
     [SerializeField] Transform playerBody;
+    UIManager um;
     float xRot = 0;
-    bool mToggle = true;
+
+    void Awake()
+    {
+        um = GameObject.Find("UI Manager").GetComponent<UIManager>();
+    }
 
     void Start()
     {
-        
+
     }
 
     void Update()
     {
         LookandRotate();
-        toggleMouse();
     }
 
     void LookandRotate()
     {
-        if(mToggle)
+        if(!um.Toggle)
         {
             float mouseX = Input.GetAxis("Mouse X") * cameraSensitivity * Time.deltaTime;
             float mouseY = Input.GetAxis("Mouse Y") * cameraSensitivity * Time.deltaTime;
@@ -33,17 +37,6 @@ public class PlayerCamera : MonoBehaviour
             transform.localRotation = Quaternion.Euler(xRot, 0, 0);
             playerBody.Rotate(Vector3.up * mouseX);
         }
-    }
-
-    void toggleMouse()
-    {
-        if (Input.GetKeyDown(KeyCode.Tab))
-            mToggle = !mToggle;
-
-        if (mToggle)
-            Cursor.lockState = CursorLockMode.Locked;
-        else
-            Cursor.lockState = CursorLockMode.None;
     }
 
 }
