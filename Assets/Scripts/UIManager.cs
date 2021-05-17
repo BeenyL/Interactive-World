@@ -5,8 +5,13 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] GameObject canvas;
-    public static UIManager um;
+    [SerializeField] Canvas miniMap_Canvas;
     PlayerCamera pc;
+
+    public static UIManager um;
+
+    public bool isMain = true;
+    
     private bool toggle = false;
     public bool Toggle { get => toggle; set => toggle = value; }
 
@@ -43,16 +48,26 @@ public class UIManager : MonoBehaviour
         if (toggle) 
         {
             canvas.SetActive(toggle);
+            miniMapToggle(toggle);
             toggleMouse(toggle);
         }
         else
         {
             canvas.SetActive(toggle);
+            miniMapToggle(toggle);
             toggleMouse(toggle);
         }
     }
 
-    public void toggleMouse(bool toggle)
+    public void miniMapToggle(bool toggle)
+    {
+        if(toggle)
+            miniMap_Canvas.enabled = !toggle;
+        else
+            miniMap_Canvas.enabled = !toggle;
+    }
+
+    void toggleMouse(bool toggle)
     {
         if (toggle)
             Cursor.lockState = CursorLockMode.None;
